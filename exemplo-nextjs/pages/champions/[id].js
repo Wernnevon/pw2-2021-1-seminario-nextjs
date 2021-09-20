@@ -1,9 +1,28 @@
+import Link from 'next/link'
+import Image from 'next/image'
+import Styles from '../../styles/ListPages.module.css'
+
 function Champion({ champion }) {
     return (
-        <div>
-            <p>{champion["name"]}</p>
-            <p>{champion["title"]}</p>
-        </div>
+        <div className={Styles.container}>
+            <h1 className={Styles.title}>{champion["name"]}</h1>
+            <h3 className={Styles.description}>{champion["title"]}</h3>
+            <Image
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion["id"]}_0.jpg`}
+                alt="Picture of the champion"
+                width={800}
+                height={400}
+                blurDataURL="data:..."
+                placeholder="blur"
+            />
+            <p>{champion["lore"]}</p>
+            <Link href="/champions">
+                <a class="btn btn-danger" style={{
+                    marginTop: 10,
+                    marginBottom: 20
+                }}>Voltar</a>
+            </Link>
+        </div >
     )
 }
 
@@ -20,7 +39,7 @@ export async function getStaticPaths() {
         params: { id: path["id"] },
     }))
 
-    return {paths, fallback:false};
+    return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {

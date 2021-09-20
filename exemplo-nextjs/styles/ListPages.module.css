@@ -7,6 +7,15 @@
     align-items: center;
 }
 
+
+
+.container p {
+    width: 800px;
+    margin-top: 10px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
 .grid {
     display: flex;
     align-items: center;
